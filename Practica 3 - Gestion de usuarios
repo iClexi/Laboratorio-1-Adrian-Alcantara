@@ -1,0 +1,11 @@
+Practica 3 - Gestion de usuarios 
+
+sudo su
+usermod -aG sudo michael
+id michael
+groupadd guest
+adduser --ingroup guest adrian
+id invitado
+deluser --remove-home adrian
+groupdel guest
+deluser --remove-home michael
