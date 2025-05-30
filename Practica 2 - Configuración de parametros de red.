@@ -1,0 +1,48 @@
+Practica 2 - Configuración de parametros de red.
+
+clear
+ip a
+ip addr del 10.0.0.200/24 dev enp0s3
+ip addr del 10.0.0.154/24 dev enp0s3
+nano /etc/netplan/01-netcfg.yaml
+^x
+nano /etc/netplan/50-cloud-init.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: true
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+^O
+^X
+ip a
+nano /etc/netplan/50-cloud-init.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+^o
+^x
+nano /etc/netplan/01-netcfg.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses:
+        - 192.168.1.100/24   
+      gateway4: 192.168.1.1  
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+^o
+^x
+netplan apply
+ip a
+
