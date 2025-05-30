@@ -1,0 +1,16 @@
+Practica 4 - Gestion de Permisos de archivos
+
+mkdir ~/materia
+vi ~/materia/estudiante.txt
+i
+Michael Robles
+20250845
+esc 
+:wq
+enter
+chmod 700 ~/materia/estudiante.txt
+chmod 070 ~/materia/estudiante.txt
+mkdir ~/materia2
+cp ~/materia/estudiante.txt ~/materia2/
+rm -rf ~/materia
+ls -ld ~/materia2
