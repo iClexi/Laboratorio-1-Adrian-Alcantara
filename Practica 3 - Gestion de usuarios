@@ -5,7 +5,7 @@ usermod -aG sudo michael
 id michael
 groupadd guest
 adduser --ingroup guest adrian
-id invitado
+id adrian
 deluser --remove-home adrian
 groupdel guest
 deluser --remove-home michael
