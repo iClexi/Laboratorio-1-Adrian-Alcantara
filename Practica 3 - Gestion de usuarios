@@ -1,11 +1,38 @@
-Practica 3 - Gestion de usuarios 
-
+# Cambiar a superusuario para tener todos los permisos
 sudo su
+
+# Añadir el usuario 'michael' al grupo 'sudo' para que pueda ejecutar comandos como administrador
 usermod -aG sudo michael
+
+# Verificar UID, GID y grupos a los que pertenece 'michael'
 id michael
+
+# Crear un nuevo grupo llamado 'guest'
 groupadd guest
+
+# Crear el usuario 'adrian' asignándolo directamente al grupo principal 'guest'
 adduser --ingroup guest adrian
+
+# Verificar UID, GID y grupos de 'adrian'
 id adrian
+
+# Eliminar el usuario 'adrian' junto con su carpeta personal
 deluser --remove-home adrian
+
+# Eliminar el grupo 'guest' (solo si no hay usuarios que lo estén usando como grupo principal)
 groupdel guest
+
+# Eliminar el usuario 'michael' junto con su carpeta personal
 deluser --remove-home michael
+
+
+# Listar todos los usuarios registrados en el sistema
+getent passwd
+
+# Listar todos los grupos del sistema
+getent group
+
+
+# Verificar si 'michael' puede usar sudo
+su - michael
+sudo whoami
