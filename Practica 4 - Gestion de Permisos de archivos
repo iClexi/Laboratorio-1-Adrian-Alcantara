@@ -1,16 +1,53 @@
-Practica 4 - Gestion de Permisos de archivos
+# -----------------------------------------
+# CHMOD Y PERMISOS EN LINUX
+# -----------------------------------------
+# Un archivo o carpeta tiene permisos para:
+#  - Propietario (usuario dueño)
+#  - Grupo (usuarios en su mismo grupo)
+#  - Otros (resto de usuarios)
+#
+# Cada permiso tiene un valor:
+#  r = 4  (lectura)
+#  w = 2  (escritura)
+#  x = 1  (ejecución/acceso)
+#
+# Se suman los valores para cada bloque:
+#  rwx = 4+2+1 = 7
+#  rw- = 4+2+0 = 6
+#  r-- = 4+0+0 = 4
+#
+# Ejemplo: chmod 750 archivo
+#  7 = rwx dueño
+#  5 = r-x grupo
+#  0 = --- otros
+#
+# Para ver permisos: ls -l
+# Ej: -rwxr-x---
+#      |  |  └─ otros
+#      |  └──── grupo
+#      └─────── dueño
+# -----------------------------------------
 
-mkdir ~/materia
+# Crear carpeta materia
+mkdir -p ~/materia
+
+# Editar archivo con vi (i → escribir → ESC → :wq → Enter)
 vi ~/materia/estudiante.txt
-i
-Michael Robles
-20250845
-esc 
-:wq
-enter
+
+# Permisos: rwx solo dueño
 chmod 700 ~/materia/estudiante.txt
-chmod 070 ~/materia/estudiante.txt
-mkdir ~/materia2
+
+# Crear carpeta materia2
+mkdir -p ~/materia2
+
+# Copiar archivo a materia2
 cp ~/materia/estudiante.txt ~/materia2/
+
+# Quitar permisos al dueño, dar rwx a grupo
+chmod 070 ~/materia/estudiante.txt
+
+# Borrar carpeta materia y su contenido
 rm -rf ~/materia
+
+# Ver info de carpeta materia2
 ls -ld ~/materia2
