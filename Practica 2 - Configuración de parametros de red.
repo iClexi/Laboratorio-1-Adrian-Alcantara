@@ -5,6 +5,19 @@ ip a
 ip addr del 10.0.0.200/24 dev enp0s3
 ip addr del 10.0.0.154/24 dev enp0s3
 nano /etc/netplan/01-netcfg.yaml
+
+
+
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      addresses:
+      - "10.0.0.150/24"
+      routes:
+      - to: "default"
+        via: "10.0.0.1"
+
 ^x
 nano /etc/netplan/50-cloud-init.yaml
 network:
